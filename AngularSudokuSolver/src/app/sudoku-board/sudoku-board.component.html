@@ -1,34 +1,55 @@
 <!-- <p>sudoku-board works!</p> -->
 <h2> Sudoku Board </h2>
-<table *ngFor="let boardRow in boardRows">
+<table [cellSpacing]="0" >
   
-  <tr id="row1">
-    <td></td><td></td><td></td> <td></td><td></td><td></td> <td></td><td></td><td></td>
+  <tr id="row1" class="topRow">
+    <td class="leftCol">{{Display(boardRows[0][0][0])}}</td><td>{{Display(boardRows[0][1][0])}}</td><td>{{Display(boardRows[0][2][0])}}</td> 
+    <td class="leftCol">{{Display(boardRows[0][3][0])}}</td><td>{{Display(boardRows[0][4][0])}}</td><td>{{Display(boardRows[0][5][0])}}</td>
+    <td class="leftCol">{{Display(boardRows[0][6][0])}}</td><td>{{Display(boardRows[0][7][0])}}</td><td class="rightCol">{{Display(boardRows[0][8][0])}}</td>
   </tr>
   <tr id="row2">
-    <td></td><td></td><td></td> <td></td><td></td><td></td> <td></td><td></td><td></td>
+    <td class="leftCol">{{Display(boardRows[1][0][0])}}</td><td>{{Display(boardRows[1][1][0])}}</td><td>{{Display(boardRows[1][2][0])}}</td> 
+    <td class="leftCol">{{Display(boardRows[1][3][0])}}</td><td>{{Display(boardRows[1][4][0])}}</td><td>{{Display(boardRows[1][5][0])}}</td>
+    <td class="leftCol">{{Display(boardRows[1][6][0])}}</td><td>{{Display(boardRows[1][7][0])}}</td><td class="rightCol">{{Display(boardRows[1][8][0])}}</td>
   </tr>
   <tr id="row3">
-    <td></td><td></td><td></td> <td></td><td></td><td></td> <td></td><td></td><td></td>
+    <td class="leftCol">{{Display(boardRows[2][0][0])}}</td><td>{{Display(boardRows[2][1][0])}}</td><td>{{Display(boardRows[2][2][0])}}</td> 
+    <td class="leftCol">{{Display(boardRows[2][3][0])}}</td><td>{{Display(boardRows[2][4][0])}}</td><td>{{Display(boardRows[2][5][0])}}</td>
+    <td class="leftCol">{{Display(boardRows[2][6][0])}}</td><td>{{Display(boardRows[2][7][0])}}</td><td class="rightCol">{{Display(boardRows[2][8][0])}}</td>
   </tr>
 
-  <tr id="row4">
-    <td></td><td></td><td></td> <td></td><td></td><td></td> <td></td><td></td><td></td>
+  <tr id="row4" class="topRow">
+    <td class="leftCol">{{Display(boardRows[3][0][0])}}</td><td>{{Display(boardRows[3][1][0])}}</td><td>{{Display(boardRows[3][2][0])}}</td> 
+    <td class="leftCol">{{Display(boardRows[3][3][0])}}</td><td>{{Display(boardRows[3][4][0])}}</td><td>{{Display(boardRows[3][5][0])}}</td>
+    <td class="leftCol">{{Display(boardRows[3][6][0])}}</td><td>{{Display(boardRows[3][7][0])}}</td><td class="rightCol">{{Display(boardRows[3][8][0])}}</td>
   </tr>
   <tr id="row5">
-    <td></td><td></td><td></td> <td></td><td></td><td></td> <td></td><td></td><td></td>
+    <td class="leftCol">{{Display(boardRows[4][0][0])}}</td><td>{{Display(boardRows[4][1][0])}}</td><td>{{Display(boardRows[4][2][0])}}</td> 
+    <td class="leftCol">{{Display(boardRows[4][3][0])}}</td><td>{{Display(boardRows[4][4][0])}}</td><td>{{Display(boardRows[4][5][0])}}</td>
+    <td class="leftCol">{{Display(boardRows[4][6][0])}}</td><td>{{Display(boardRows[4][7][0])}}</td><td class="rightCol">{{Display(boardRows[4][8][0])}}</td>
   </tr>
   <tr id="row6">
-    <td></td><td></td><td></td> <td></td><td></td><td></td> <td></td><td></td><td></td>
+    <td class="leftCol">{{Display(boardRows[5][0][0])}}</td><td>{{Display(boardRows[5][1][0])}}</td><td>{{Display(boardRows[5][2][0])}}</td> 
+    <td class="leftCol">{{Display(boardRows[5][3][0])}}</td><td>{{Display(boardRows[5][4][0])}}</td><td>{{Display(boardRows[5][5][0])}}</td>
+    <td class="leftCol">{{Display(boardRows[5][6][0])}}</td><td>{{Display(boardRows[5][7][0])}}</td><td class="rightCol">{{Display(boardRows[5][8][0])}}</td> 
   </tr>
 
-  <tr id="row7">
-    <td></td><td></td><td></td> <td></td><td></td><td></td> <td></td><td></td><td></td>
+  <tr id="row7" class="topRow">
+    <td class="leftCol">{{Display(boardRows[6][0][0])}}</td><td>{{Display(boardRows[6][1][0])}}</td><td>{{Display(boardRows[6][2][0])}}</td> 
+    <td class="leftCol">{{Display(boardRows[6][3][0])}}</td><td>{{Display(boardRows[6][4][0])}}</td><td>{{Display(boardRows[6][5][0])}}</td>
+    <td class="leftCol">{{Display(boardRows[6][6][0])}}</td><td>{{Display(boardRows[6][7][0])}}</td><td class="rightCol">{{Display(boardRows[6][8][0])}}</td>
   </tr>
   <tr id="row8">
-    <td></td><td></td><td></td> <td></td><td></td><td></td> <td></td><td></td><td></td>
+    <td class="leftCol">{{Display(boardRows[7][0][0])}}</td><td>{{Display(boardRows[7][1][0])}}</td><td>{{Display(boardRows[7][2][0])}}</td> 
+    <td class="leftCol">{{Display(boardRows[7][3][0])}}</td><td>{{Display(boardRows[7][4][0])}}</td><td>{{Display(boardRows[7][5][0])}}</td>
+    <td class="leftCol">{{Display(boardRows[7][6][0])}}</td><td>{{Display(boardRows[7][7][0])}}</td><td class="rightCol">{{Display(boardRows[7][8][0])}}</td>
   </tr>
-  <tr id="row9">
-    <td></td><td></td><td></td> <td></td><td></td><td></td> <td></td><td></td><td></td>
+  <tr id="row9" class="bottomRow">
+    <td class="leftCol">{{Display(boardRows[8][0][0])}}</td><td>{{Display(boardRows[8][1][0])}}</td><td>{{Display(boardRows[8][2][0])}}</td> 
+    <td class="leftCol">{{Display(boardRows[8][3][0])}}</td><td>{{Display(boardRows[8][4][0])}}</td><td>{{Display(boardRows[8][5][0])}}</td>
+    <td class="leftCol">{{Display(boardRows[8][6][0])}}</td><td>{{Display(boardRows[8][7][0])}}</td><td class="rightCol">{{Display(boardRows[8][8][0])}}</td>
   </tr>
 </table>
+<br />
+<br />
+<button (click)="handleSolveClick()">Solve</button>

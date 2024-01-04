@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './sudoku-board.component.css'
 })
 export class SudokuBoardComponent {
+  handleSolveClick() {
+    this.SolveBoard();
+  }
 
   zeroCoordinates = [10, 10];
   possibleNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -127,17 +130,25 @@ export class SudokuBoardComponent {
     ],
   ];
   
+  Display(num: number): string {
+    if (num == 0){
+      return " ";
+    }
+    return `${num}`;
+  }
+
   PrintBoard(): void {
     console.log(" ----- ----- ----- ----- ----- ----- ----- ----- ----- ");
     for (let row = 0; row < 9; row++) {
       let rowString = "|";
       for (let col = 0; col < 9; col++) {
-        rowString = rowString.concat(`  ${this.boardRows[row][col]}  |`);
+        rowString = rowString.concat(`  ${this.Display(this.boardRows[row][col][0])} |`);
       }
       console.log(rowString);
       console.log(" ----- ----- ----- ----- ----- ----- ----- ----- ----- ");
     }
   }
+
   IsBoardSolved(): boolean {
     for (let row = 0; row < 9; row++) {
       for (let col = 0; col < 9; col++) {
@@ -155,10 +166,17 @@ export class SudokuBoardComponent {
     return true;
   }
   SolveBoard(): void {
-  
-    while (!this.IsBoardSolved()) {
+    // this.PrintBoard();
+    // this.EliminatePossibilites();
+    // this.IsolateUniqueInGrid();
+    // this.PrintBoard();
+
+    // console.log(`IsBoardSolved: ${this.IsBoardSolved()}`);
+
+    while (this.IsBoardSolved() == false) {
       this.EliminatePossibilites();
       this.IsolateUniqueInGrid();
+      this.PrintBoard()
     }
     console.log('----------------------------------------');
     console.log("SOLVED!!!");
@@ -305,8 +323,4 @@ export class SudokuBoardComponent {
       `Grid ${gridNum} | Numbers left to eliminate: ${this.gridNumsRemaining[gridNum]}`
     );
   }
-  
-  //this.SolveBoard();
-  
-
 }
