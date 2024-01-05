@@ -142,7 +142,7 @@ export class SudokuBoardComponent {
     for (let row = 0; row < 9; row++) {
       let rowString = "|";
       for (let col = 0; col < 9; col++) {
-        rowString = rowString.concat(`  ${this.Display(this.boardRows[row][col][0])} |`);
+        rowString = rowString.concat(`  ${this.Display(this.boardRows[row][col][0])}  |`);
       }
       console.log(rowString);
       console.log(" ----- ----- ----- ----- ----- ----- ----- ----- ----- ");
@@ -166,7 +166,7 @@ export class SudokuBoardComponent {
     return true;
   }
   SolveBoard(): void {
-    // this.PrintBoard();
+    this.PrintBoard();
     // this.EliminatePossibilites();
     // this.IsolateUniqueInGrid();
     // this.PrintBoard();
