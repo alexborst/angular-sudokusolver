@@ -177,18 +177,18 @@ export class SudokuBoardComponent {
   }
 
   SolveBoard(): void {
-    this.PrintBoard();
 
+    // SINGLE RUN FOR TESTING
+    this.PrintBoard();
     this.EliminatePossibilites();
     this.IsolateUniqueInGrid();
     this.PrintBoardRows();
 
-    // console.log(`IsBoardSolved: ${this.IsBoardSolved()}`);
 
-    // while (this.IsBoardSolved() == false) {
+    // FULL RUN UNTIL SOLVED
+    // while (this.IsBoardSolved() === false) {
     //   this.EliminatePossibilites();
     //   this.IsolateUniqueInGrid();
-    //   this.PrintBoard()
     // }
     // console.log('----------------------------------------');
     // console.log("SOLVED!!!");
@@ -210,7 +210,7 @@ export class SudokuBoardComponent {
         if (this.boardRows[row][col].length === 1) {
           console.log()
           this.RemoveNumberFromRow(row, col, this.boardRows[row][col][0]);
-          this.RemoveNumberFromCol(row, col, this.boardRows[row][col][0]);
+          this.RemoveNumberFromColumn(row, col, this.boardRows[row][col][0]);
           this.RemoveNumberFromGrid(gridNum, this.boardRows[row][col][0]);
         }
       }
@@ -220,27 +220,22 @@ export class SudokuBoardComponent {
     let uniqueCoordinates = this.zeroCoordinates;
     for (let gridNum = 0; gridNum < 9; gridNum++) {
       for (let num = 1; num <= 9; num++) {
-        console.log(`Grid: ${gridNum} | ${this.gridNumsRemaining[gridNum]}`);
+        console.log(`START IsolateUniqueInGrid() Grid: ${gridNum} | ${this.gridNumsRemaining[gridNum]}`);
         if(this.gridNumsRemaining[gridNum].includes(num))
         {
           console.log(`uniqueCoordinates before CheckUniqueInGrid(): ${uniqueCoordinates}`);
           console.log(`uniqueCoordinates from CheckUniqueInGrid() by function: ${this.CheckUniqueInGrid(num, gridNum)}`);
           uniqueCoordinates = this.CheckUniqueInGrid(num, gridNum);
           console.log(`uniqueCoordinates from CheckUniqueInGrid() by return: ${uniqueCoordinates}`);
+          
           if ((uniqueCoordinates[0] !== 10) || (uniqueCoordinates[1] !== 10)) {
-  
-            console.log(
-              `Truth check: uniqueCoordinates[0] ${uniqueCoordinates[0]} === 10: ${uniqueCoordinates[0] === 10} | uniqueCoordinates[1] ${uniqueCoordinates[1]} === 10: ${uniqueCoordinates[1] === 10} `);
-            console.log(
-              `IsolateUniqueInGrid() Row: ${uniqueCoordinates[0]}, Column: ${uniqueCoordinates[1]} is currently ${this.boardRows[uniqueCoordinates[0]][uniqueCoordinates[1]]}`
-            );
+
             this.boardRows[uniqueCoordinates[0]][uniqueCoordinates[1]] = [num];
             console.log(
               `IsolateUniqueInGrid() Row: ${uniqueCoordinates[0]}, Column: ${uniqueCoordinates[1]} isolated to ${num}`
             );
             this.gridNumsRemaining[gridNum].splice(this.gridNumsRemaining[gridNum].indexOf(num),1);
             console.log(`Grid: ${gridNum} | ${this.gridNumsRemaining[gridNum]}`);
-            uniqueCoordinates = this.zeroCoordinates;
           }
         }
       }
@@ -292,9 +287,9 @@ export class SudokuBoardComponent {
     }
     if (this.boardRows[row][col].length === 2 && this.boardRows[row][col][0] === 0)
     {
-      console.log(
-        `RemoveNumber() Row: ${row}, Column: ${col} is currently ${this.boardRows[row][col]}`
-      );
+      // console.log(
+      //   `RemoveNumber() Row: ${row}, Column: ${col} is currently ${this.boardRows[row][col]}`
+      // );
       this.boardRows[row][col].splice(this.boardRows[row][col].indexOf(0), 1);
       console.log(
         `RemoveNumber() Row: ${row}, Column: ${col} isolated to ${this.boardRows[row][col][0]}`
@@ -307,21 +302,15 @@ export class SudokuBoardComponent {
       if (col != colCheck && this.boardRows[row][colCheck].includes(num))
       {
         this.RemoveNumber(row, colCheck, num);
-        console.log(
-          `RemoveNumberFromRow Removed ${num} from Row: ${row}, Column: ${colCheck}`
-        );
       }
     }
   }
-  RemoveNumberFromCol(row: number, col: number, num: number): void {
+  RemoveNumberFromColumn(row: number, col: number, num: number): void {
     for (let rowCheck = 0; rowCheck < 9; rowCheck++)
     {
       if (row != rowCheck && this.boardRows[rowCheck][col].includes(num))
       {
         this.RemoveNumber(rowCheck, col, num);
-        console.log(
-          `RemoveNumberFromCol Removed ${num} from Row: ${rowCheck}, Column: ${col}`
-        );
       }
     }
   }
@@ -335,16 +324,16 @@ export class SudokuBoardComponent {
         for (let col = colIndex; col < colIndex + 3; col++) {
           if (this.boardRows[row][col].includes(num) && this.boardRows[row][col].length > 1){
             this.RemoveNumber(row, col, num);
-            console.log(
-              `RemoveNumberFromGrid Removed ${num} from Grid ${gridNum} | Row: ${row}, Column: ${col}`
-            );
+            // console.log(
+            //   `RemoveNumberFromGrid Removed ${num} from Grid ${gridNum} | Row: ${row}, Column: ${col}`
+            // );
           }
         }
       }
       this.gridNumsRemaining[gridNum].splice(this.gridNumsRemaining[gridNum].indexOf(num),1);
     }
-    console.log(
-      `Grid ${gridNum} | Numbers left to eliminate: ${this.gridNumsRemaining[gridNum]}`
-    );
+    // console.log(
+    //   `Grid ${gridNum} | Numbers left to eliminate: ${this.gridNumsRemaining[gridNum]}`
+    // );
   }
 }
