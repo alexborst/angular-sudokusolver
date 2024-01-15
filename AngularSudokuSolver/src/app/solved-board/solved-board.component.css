@@ -1,0 +1,35 @@
+td {
+  width: 40px;
+  height: 40px;
+  font-size: x-large;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.topRow td {
+  border-top-width: 3px;
+  border-style: solid;
+  border-color: black;
+}
+
+.bottomRow td {
+  border-bottom-width: 3px;
+  border-style: solid;
+  border-color: black;
+}
+
+.leftCol {
+  border-left-width: 3px;
+  border-style: solid;
+  border-color: black;
+}
+
+.rightCol {
+  border-right-width: 3px;
+  border-style: solid;
+  border-color: black;
+}
